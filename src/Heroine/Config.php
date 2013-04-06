@@ -4,9 +4,10 @@ namespace Heroine;
 
 class Config
 {
-	public const TYPE_INSTANTIABLE = 0;
-	public const TYPE_CALLABLE = 1;
-	public const TYPE_FACTORY = 2;
+	public const TYPE_ALIAS        = 0;
+	public const TYPE_INSTANTIABLE = 1;
+	public const TYPE_CALLABLE     = 2;
+	public const TYPE_FACTORY      = 3;
 
 	protected $_aliases = array();
 	protected $_instantiables = array();
@@ -30,6 +31,65 @@ class Config
 		$this->_factories = isset($config['factories'])
 			? $config['factories']
 			: array();
+	}
+
+	public function exists($alias)
+	{
+		return array_key_exists($alias, $this->_aliases)
+			OR array_key_exists($alias, $this->_instantiables)
+			OR array_key_exists($alias, $this->_callables)
+			OR array_key_exists($alias, $this->_factories);
+	}
+
+	public function addAlias($alias, $service)
+	{
+		if ($this->exists($alias))
+			throw new ServiceDefinitionException('Service already defined');
+
+		if ( ! is_string($service))
+			throw new ServiceDefinitionException('Expected string value for '.$alias);
+
+		$this->_aliases[$alias] = $service;
+		return TRUE;
+	}
+
+	public function addInstantiable($alias, $service)
+	{
+		if ($this->exists($alias))
+			throw new ServiceDefinitionException('Service already defined');
+
+		if ( ! is_string($service))
+			throw new ServiceDefinitionException('Expected string value for '.$alias);
+
+		if ( ! class_exists($service))
+			throw new ServiceDefinitionException('Cannot load class for '.$alias);
+
+		$this->_instantiables[$alias] = $service;
+	}
+
+	public function addCallable($alias, $service)
+	{
+		if ($this->exists($alias))
+			throw new ServiceDefinitionException('Service already defined');
+
+		if ( ! is_callable($service))
+			throw new ServiceDefinitionException('Expected callable for '.$alias);
+
+		$this->_callables[$alias] = $service;
+	}
+
+	public function addFactory($alias, $service)
+	{
+		if ($this->exists($alias))
+			throw new ServiceDefinitionException('Service already defined');
+
+		if ( ! is_string($service))
+			throw new ServiceDefinitionException('Expected string value for '.$alias);
+
+		if ( ! class_exists($service))
+			throw new ServiceDefinitionException('Cannot load class for '.$alias);
+
+		$this->_factories[$alias] = $service;
 	}
 
 	public function resolveAlias($service)

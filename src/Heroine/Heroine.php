@@ -32,8 +32,40 @@ class Heroine
 
 	public function __construct($config = array(), RepositoryInterface $repository = NULL)
 	{
-		$this->_config = $config;
+		$this->_config = new Config;
 		$this->_repository = $repository ?: new Repository;
+
+		if (isset($config['aliases']))
+		{
+			foreach ($config['aliases'] as $k => $v)
+			{
+				$this->addAlias($k, $v);
+			}
+		}
+
+		if (isset($config['instantiables']))
+		{
+			foreach ($config['instantiables'] as $k => $v)
+			{
+				$this->addInstantiable($k, $v);
+			}
+		}
+
+		if (isset($config['callables']))
+		{
+			foreach ($config['callables'] as $k => $v)
+			{
+				$this->addCallable($k, $v);
+			}
+		}
+
+		if (isset($config['factories']))
+		{
+			foreach ($config['factories'] as $k => $v)
+			{
+				$this->addFactory($k, $v);
+			}
+		}
 	}
 
 	/**
@@ -82,6 +114,26 @@ class Heroine
 		$this->_repository->set($resolvedName, $object);
 
 		return $object;
+	}
+
+	public function addAlias($alias, $service)
+	{
+		return $this->_config->addAlias($alias, $service);
+	}
+
+	public function addInstantiable($alias, $service)
+	{
+		return $this->_config->addInstantiable($alias, $service);
+	}
+
+	public function addCallable($alias, $service)
+	{
+		return $this->_config->addCallable($alias, $service);
+	}
+
+	public function addFactory($alias, $service)
+	{
+		return $this->_config->addFactory($alias, $service);
 	}
 
 	/**
