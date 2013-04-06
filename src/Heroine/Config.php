@@ -32,7 +32,7 @@ class Config
 			: array();
 	}
 
-	publikc function resolveAlias($service)
+	public function resolveAlias($service)
 	{
 		if (isset($this->_aliases[$service]))
 		{
