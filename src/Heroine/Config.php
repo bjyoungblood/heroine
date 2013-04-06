@@ -13,7 +13,7 @@ class Config
 	protected $_callables = array();
 	protected $_factories = array();
 
-	public function __construct(array $config)
+	public function __construct($config = array())
 	{
 		$this->_aliases = isset($config['aliases'])
 			? $config['aliases']

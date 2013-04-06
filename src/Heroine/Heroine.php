@@ -30,7 +30,7 @@ class Heroine
 
 	protected $_repository;
 
-	public function __construct(array $config = array(), RepositoryInterface $repository = NULL)
+	public function __construct($config = array(), RepositoryInterface $repository = NULL)
 	{
 		$this->_config = $config;
 		$this->_repository = $repository ?: new Repository;
