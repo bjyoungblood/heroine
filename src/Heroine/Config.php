@@ -4,10 +4,10 @@ namespace Heroine;
 
 class Config
 {
-	public const TYPE_ALIAS        = 0;
-	public const TYPE_INSTANTIABLE = 1;
-	public const TYPE_CALLABLE     = 2;
-	public const TYPE_FACTORY      = 3;
+	const TYPE_ALIAS        = 0;
+	const TYPE_INSTANTIABLE = 1;
+	const TYPE_CALLABLE     = 2;
+	const TYPE_FACTORY      = 3;
 
 	protected $_aliases = array();
 	protected $_instantiables = array();
