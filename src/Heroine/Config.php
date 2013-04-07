@@ -2,6 +2,9 @@
 
 namespace Heroine;
 
+use Heroine\Exception\ServiceDefinitionException;
+use Heroine\Exception\ServiceNotFoundException;
+
 class Config
 {
 	const TYPE_ALIAS        = 0;
@@ -128,6 +131,6 @@ class Config
 			);
 		}
 
-		throw new Exception\ServiceNotFoundException;
+		throw new ServiceNotFoundException;
 	}
 }

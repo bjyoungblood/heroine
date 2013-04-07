@@ -2,6 +2,8 @@
 
 namespace Heroine\Exception;
 
-class InvalidFactoryException extends Exception
+use Exception;
+
+class ServiceDefinitionException extends Exception
 {
 }
