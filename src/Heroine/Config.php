@@ -12,10 +12,11 @@ class Config
 	const TYPE_CALLABLE     = 2;
 	const TYPE_FACTORY      = 3;
 
-	protected $_aliases = array();
+	protected $_aliases       = array();
 	protected $_instantiables = array();
-	protected $_callables = array();
-	protected $_factories = array();
+	protected $_callables     = array();
+	protected $_factories     = array();
+	protected $_initializers  = array();
 
 	public function __construct($config = array())
 	{
@@ -55,7 +56,7 @@ class Config
 		{
 			foreach ($config['initializers'] as $callable)
 			{
-				$this->addInitializer($callable)
+				$this->addInitializer($callable);
 			}
 		}
 	}
@@ -125,6 +126,11 @@ class Config
 			throw new ServiceDefinitionException('Initializer must be a callable');
 
 		$this->_callables[] = $callable;
+	}
+
+	public function getInitializers()
+	{
+		return $this->_initializers;
 	}
 
 	public function resolveAlias($service)
