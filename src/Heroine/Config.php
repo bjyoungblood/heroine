@@ -128,6 +128,26 @@ class Config
 		$this->_callables[] = $callable;
 	}
 
+	public function getAliases()
+	{
+		return $this->_aliases;
+	}
+
+	public function getInstantiables()
+	{
+		return $this->_instantiables;
+	}
+
+	public function getCallables()
+	{
+		return $this->_callables;
+	}
+
+	public function getFactories()
+	{
+		return $this->_factories;
+	}
+
 	public function getInitializers()
 	{
 		return $this->_initializers;
