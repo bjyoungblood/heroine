@@ -1,8 +1,0 @@
-<phpunit colors="true" bootstrap="bootstrap.php" verbose="true">
-	<testsuites>
-		<testsuite name="Heroine">
-			<file>HeroineTest/ConfigTest.php</file>
-			<file>HeroineTest/HeroineTest.php</file>
-		</testsuite>
-	</testsuites>
-</phpunit>
