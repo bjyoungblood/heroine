@@ -120,12 +120,12 @@ class Config
 		$this->_factories[$alias] = $service;
 	}
 
-	public function addInitializer($callable)
+	public function addInitializer($initializer)
 	{
-		if ( ! is_callable($callable))
+		if ( ! is_callable($initializer))
 			throw new ServiceDefinitionException('Initializer must be a callable');
 
-		$this->_callables[] = $callable;
+		$this->_initializers[] = $initializer;
 	}
 
 	public function getAliases()
