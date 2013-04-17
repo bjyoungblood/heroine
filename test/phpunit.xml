@@ -3,7 +3,6 @@
 		<testsuite name="Heroine">
 			<file>HeroineTest/ConfigTest.php</file>
 			<file>HeroineTest/HeroineTest.php</file>
-			<file>HeroineTest/RepositoryTest.php</file>
 		</testsuite>
 	</testsuites>
 </phpunit>

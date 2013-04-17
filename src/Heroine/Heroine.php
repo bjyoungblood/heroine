@@ -77,8 +77,8 @@ class Heroine
 				break;
 			case Config::TYPE_FACTORY:
 				$factory = new $factory;
-				$object = $factory->createService($resolvedName)
-					?: $factory->createService($name);
+				$object = $factory->createService($this, $resolvedName)
+					?: $factory->createService($this, $name);
 				break;
 			default:
 				throw new Exception\InvalidFactoryException;

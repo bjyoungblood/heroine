@@ -157,7 +157,7 @@ class Config
 	{
 		if (isset($this->_aliases[$service]))
 		{
-			return $this->resolveService($this->_aliases[$service]);
+			$service = $this->resolveAlias($this->_aliases[$service]);
 		}
 
 		return $service;
@@ -184,7 +184,7 @@ class Config
 		if (isset($this->_factories[$service]))
 		{
 			return array(
-				'type'    => self::TYPE_CALLABLE,
+				'type'    => self::TYPE_FACTORY,
 				'factory' => $this->_factories[$service],
 			);
 		}
