@@ -66,6 +66,14 @@ class Heroine
 				$this->addFactory($k, $v);
 			}
 		}
+
+		if (isset($config['initializers']))
+		{
+			foreach ($config['initializers'] as $callable)
+			{
+				$this->addInitializer($callable)
+			}
+		}
 	}
 
 	/**
@@ -110,7 +118,13 @@ class Heroine
 
 		if ( ! $object)
 			throw new Exception\ServiceNotFoundException;
-		
+
+		$initializers = $this->_config->getInitializers();
+		foreach ($initializers as $callable)
+		{
+			$callable($this, $object);
+		}
+
 		$this->_repository->set($resolvedName, $object);
 
 		return $object;
@@ -134,6 +148,11 @@ class Heroine
 	public function addFactory($alias, $service)
 	{
 		return $this->_config->addFactory($alias, $service);
+	}
+
+	public function addInitializer($callable)
+	{
+		return $this->_config->addInitializer($callable);
 	}
 
 	/**
