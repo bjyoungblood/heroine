@@ -32,48 +32,16 @@ class Heroine
 
 	public function __construct($config = array(), RepositoryInterface $repository = NULL)
 	{
-		$this->_config = new Config;
+		if (is_object($config) && $config instanceof Config)
+		{
+			$this->_config = $config;
+		}
+		else
+		{
+			$this->_config = new Config($config);
+		}
+
 		$this->_repository = $repository ?: new Repository;
-
-		if (isset($config['aliases']))
-		{
-			foreach ($config['aliases'] as $k => $v)
-			{
-				$this->addAlias($k, $v);
-			}
-		}
-
-		if (isset($config['instantiables']))
-		{
-			foreach ($config['instantiables'] as $k => $v)
-			{
-				$this->addInstantiable($k, $v);
-			}
-		}
-
-		if (isset($config['callables']))
-		{
-			foreach ($config['callables'] as $k => $v)
-			{
-				$this->addCallable($k, $v);
-			}
-		}
-
-		if (isset($config['factories']))
-		{
-			foreach ($config['factories'] as $k => $v)
-			{
-				$this->addFactory($k, $v);
-			}
-		}
-
-		if (isset($config['initializers']))
-		{
-			foreach ($config['initializers'] as $callable)
-			{
-				$this->addInitializer($callable)
-			}
-		}
 	}
 
 	/**

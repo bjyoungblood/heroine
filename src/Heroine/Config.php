@@ -19,21 +19,45 @@ class Config
 
 	public function __construct($config = array())
 	{
-		$this->_aliases = isset($config['aliases'])
-			? $config['aliases']
-			: array();
+		if (isset($config['aliases']))
+		{
+			foreach ($config['aliases'] as $k => $v)
+			{
+				$this->addAlias($k, $v);
+			}
+		}
 
-		$this->_instantiables = isset($config['instantiables'])
-			? $config['instantiables']
-			: array();
+		if (isset($config['instantiables']))
+		{
+			foreach ($config['instantiables'] as $k => $v)
+			{
+				$this->addInstantiable($k, $v);
+			}
+		}
 
-		$this->_callables = isset($config['callables'])
-			? $config['callables']
-			: array();
+		if (isset($config['callables']))
+		{
+			foreach ($config['callables'] as $k => $v)
+			{
+				$this->addCallable($k, $v);
+			}
+		}
 
-		$this->_factories = isset($config['factories'])
-			? $config['factories']
-			: array();
+		if (isset($config['factories']))
+		{
+			foreach ($config['factories'] as $k => $v)
+			{
+				$this->addFactory($k, $v);
+			}
+		}
+
+		if (isset($config['initializers']))
+		{
+			foreach ($config['initializers'] as $callable)
+			{
+				$this->addInitializer($callable)
+			}
+		}
 	}
 
 	public function exists($alias)
