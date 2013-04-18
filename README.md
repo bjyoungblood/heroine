@@ -1,6 +1,6 @@
 # Heroine
 
-[![Travis-CI Build Status](https://api.travis-ci.org/bjyoungblood/heroine.png?branch=master)](https://travis-ci.org/bjyoungblood/heroine)
+[![Travis-CI Build Status](https://api.travis-ci.org/synapsestudios/heroine.png?branch=master)](https://travis-ci.org/synapsestudios/heroine)
 
 Heroine has come to rescue you from your DI nightmares by providing a simple, dependency-free service locator and repository.
 
