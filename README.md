@@ -1,5 +1,7 @@
 # Heroine
 
+[![Travis-CI Build Status](https://api.travis-ci.org/bjyoungblood/heroine.png?branch=master)](https://travis-ci.org/bjyoungblood/heroine)
+
 Heroine has come to rescue you from your DI nightmares by providing a simple, dependency-free service locator and repository.
 
 For more information on the service locator pattern, you can read the
