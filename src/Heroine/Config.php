@@ -189,6 +189,6 @@ class Config
 			);
 		}
 
-		throw new ServiceNotFoundException;
+		throw new ServiceNotFoundException($service);
 	}
 }
