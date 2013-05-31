@@ -3,6 +3,7 @@
 		<testsuite name="Heroine">
 			<file>test/HeroineTest/ConfigTest.php</file>
 			<file>test/HeroineTest/HeroineTest.php</file>
+			<file>test/HeroineTest/ServiceOverrideConfigTest.php</file>
 		</testsuite>
 	</testsuites>
 </phpunit>
