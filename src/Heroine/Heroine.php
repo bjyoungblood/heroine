@@ -18,7 +18,7 @@ class Heroine
 	 * @param  string $alias
 	 * @return Heroine
 	 */
-	public static function instance($alias = 'default', array $config = array())
+	public static function instance($alias = 'default', $config = array())
 	{
 		if ( ! isset(self::$_instances[$alias]))
 			self::$_instances[$alias] = new Heroine($config);
