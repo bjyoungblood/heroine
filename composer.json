@@ -1,0 +1,7 @@
+{
+    "name": "bjyoungblood/heroine",
+    "require": {},
+    "autoload": {
+	    "psr-0": { "Heroine": "src/" }
+    }
+}
